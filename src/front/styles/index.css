@@ -7,3 +7,36 @@
     
 */
 
+/* :root {
+    --background-color: #fffffb;
+    --text-color: #202020;
+    --border-color: gray;
+} */
+  
+.theme-light {
+    --background-color: #fffffb;
+    --component-background-color: #eee5e5;
+    --text-color-primary: #19647e;
+    --text-color-secundary: #28afb0; 
+    --text-color: #202020;
+    --border-color: gray;
+    --hover-color:#8a4287;
+}
+  
+.theme-dark {
+    --background-color: #0a0a0a;
+    --component-background-color: #fffffb;
+    --text-color-primary: #45b4d9;
+    --text-color-secundary: #79e2e2; 
+    --text-color: #fffffb;
+    --border-color: darkgray;
+    --hover-color:#d8aed7;
+}
+  
+.body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+
+

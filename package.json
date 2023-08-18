@@ -30,7 +30,7 @@
 		"@babel/core": "^7.16.0",
 		"@babel/plugin-proposal-class-properties": "^7.16.0",
 		"@babel/plugin-transform-runtime": "^7.16.4",
-		"@babel/preset-env": "^7.16.4",
+		"@babel/preset-env": "^7.22.10",
 		"@babel/preset-react": "^7.16.0",
 		"@babel/runtime": "^7.16.3",
 		"babel-eslint": "^10.1.0",
@@ -52,7 +52,7 @@
 		"prettier": "^2.5.1",
 		"remote-origin-url": "^2.0.0",
 		"style-loader": "^3.3.1",
-		"webpack": "^5.65.0",
+		"webpack": "^5.88.2",
 		"webpack-cli": "^4.9.1",
 		"webpack-dev-server": "^4.15.1",
 		"webpack-merge": "^5.8.0"
