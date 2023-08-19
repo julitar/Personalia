@@ -5,6 +5,12 @@
     font-family: 'Raleway', sans-serif;
     font-family: 'Work Sans', sans-serif;
     
+    --violet-jtc: #4b244aff;
+    --paynes-gray: #19647eff;
+    --verdigris: #28afb0ff;
+    --timberwolf: #ddcecdff;
+    --isabelline: #eee5e5ff;
+
 */
 
 /* :root {
@@ -40,3 +46,9 @@
 
 
 
+.logo {
+    font-family: 'Julius Sans One', sans-serif;
+    text-decoration: none !important;
+    font-size: 20px;
+    letter-spacing: 10px;
+}
