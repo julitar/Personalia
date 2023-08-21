@@ -5,6 +5,7 @@ import chico from "../../img/chico.jpg";
 import "../../styles/home.css";
 
 export const Home = () => {
+	
 	const { store, actions } = useContext(Context);
     const navigate = useNavigate();
 	const [email, setEmail] = useState('');
