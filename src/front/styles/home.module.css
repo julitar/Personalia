@@ -1,0 +1,76 @@
+.homeContainer{
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.header{
+    color: var(--color-secondary);
+    font-size: 28px;
+
+}
+
+.text{
+    color: var(--text-color);
+    font-size: 16px;
+}
+
+.title{
+    color: var(--color-primary);
+    font-family: 'Julius Sans One', sans-serif;
+    font-size: 32px;
+    letter-spacing: 10px;
+}
+
+.my_label{
+    font-style: italic;
+    color: var(--text-color);
+}
+
+.container_signup{
+    background-color: var(--alternative-background);
+    height: 100%;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.subtitulo{
+    color:var(--color-tertiary)
+}
+
+.buttonTertiary{
+    background-color: var(--color-tertiary);
+    color: var(--button-text-color);
+    font-family: "Raleway-Bold", Helvetica;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 6px;
+}
+
+.buttonTertiary:hover{
+    background-color: var(--hover-color);
+    color: var(--button-text-color);
+}
+
+.outlineButtonPrimary{
+    border-color: var(--color-primary);
+    background-color: var(--background-color);
+    color: var(--color-primary);
+    font-family: "Raleway-Bold", Helvetica;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    border-width: 2px;
+}
+
+.outlineButtonPrimary:hover{
+    background-color: var(--color-primary);
+    color: var(--button-text-color);
+}
+
+.myImg{
+    object-fit: cover;
+    height: 100%;
+    margin: none;
+}
+

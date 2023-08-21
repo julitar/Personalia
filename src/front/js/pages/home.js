@@ -1,8 +1,10 @@
 import React, { useContext, useState, useEffect, useSyncExternalStore } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
-import chico from "../../img/chico.jpg";
+import login from "../../img/login.jpg";
 import "../../styles/home.css";
+import styles from "../../styles/home.module.css"
+
 
 export const Home = () => {
 	
@@ -25,26 +27,26 @@ export const Home = () => {
 	return (
 		
     	<div className= "container justify-content-center">
-        	<div className= "row justify-content-center p-3">
+        	<div className= "row justify-content-center">
 				<div className= "m-5 text-center col-10">
-					<h2>Welcome to our community of organized individuals!</h2>
-					<p>Take control of your contacts and make managing them a breeze. Personalia allows you to effortlessly categorize, schedule, and connect with your contacts.</p>
+					<h2 className={styles.header}>Welcome to our community of organized individuals!</h2>
+					<p className={styles.text}>Take control of your contacts and make managing them a breeze. Personalia allows you to effortlessly categorize, schedule, and connect with your contacts.</p>
 				</div>
 				<div class="col-10 mb-4 border rounded-3">
 					<div className="row justify-content-center">
-						<div className="col-6 text-center">
-							<img src={chico} alt="" width="500"/>
+						<div className="col-sm-6 text-center p-0 d-none d-sm-block">
+							<img src={login} alt="" className={`img-fluid rounded-start ${styles.myImg}`}/>
 						</div>
-						<div className="col-6 p-5">
-							<h1 class="display-5 fw-bold">Log in</h1>
+						<div className="col-sm-6 col-12 p-5">
+							<h1 className={`display-5 fw-bold ${styles.title}`}>Log in</h1>
 							<form>		
 								<div className="form-floating my-3">
 									<input type="email" className="form-control" id="email" placeholder="name@mail.com" value={email} onChange={(e) => setEmail(e.target.value)}/>
-									<label className="my_label" htmlFor="email">Email</label>
+									<label className={styles.my_label} htmlFor="email">Email</label>
 								</div>
 								<div className="form-floating my-3">
 									<input type="password" className="form-control" id="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-									<label className="my_label" htmlFor="password">Contraseña</label>
+									<label className={styles.my_label} htmlFor="password">Contraseña</label>
 								</div>
 								
 								<div className="checkbox mb-3">
@@ -53,21 +55,21 @@ export const Home = () => {
 									</label>
 								</div>
 								<div className="text-center">
-									<button className="w-75 btn btn-primary btn-lg" type="submit" onClick={(e) => handleLogin(e, email, password)}>Iniciar Sesión</button>
+									<button className={`px-4 btn btn-lg ${styles.outlineButtonPrimary}`} type="submit" onClick={(e) => handleLogin(e, email, password)}>Go!</button>
 								</div>
 							</form>
 						</div>
 					</div>
 				</div>
-				<div className="col-8 my-5">
-				<div className="row">
-					<div className="col-6">
-						<h3>New here?</h3>
-						<p>Join our community of organized individuals! Register now to unlock the full potential of Personalia.</p>
+				<div className={`col-12 my-5 d-flex justify-content-center ${styles.container_signup}`}>
+				<div className="row align-items-center">
+					<div className="col-lg-8 col-sm-12 text-center">
+						<h3 className={styles.subtitulo}>New here?</h3>
+						<p className={styles.text}>Join our community of organized individuals! <br/> Register now to unlock the full potential of <strong>Personalia</strong>.</p>
 					</div>
-					<div className="d-flex col-6 align-items-center justify-content-center">
+					<div className="d-flex col-lg-4 col-sm-12 justify-content-center align-items-center">
 						<Link to="/signup">
-							<button className="btn btn-primary btn-lg" type="button">Sign up!</button>
+							<button className={`btn btn-lg px-4 ${styles.buttonTertiary}`} type="button">Sign up!</button>
 						</Link>
 					</div>
 				</div>
