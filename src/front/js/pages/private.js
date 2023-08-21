@@ -3,6 +3,8 @@ import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import styles from "../../styles/private.module.css"
 import { Card } from "../component/card";
+import privateimg from "../../img/privateimg.jpg";
+
 
 export const Private = () => {
 	const { store, actions } = useContext(Context);
@@ -12,7 +14,7 @@ export const Private = () => {
             <div className="row privateHeader">
                 <div className="col-lg-3">
                     <div>
-                        <img className={styles.privateImage} src="https://www.hogarmania.com/archivos/201710/mantener-ordenado-escritorio-1280x720x80xX.jpg" />
+                        <img className={styles.privateImage} src={privateimg} />
                     </div>
                 </div>
                 <div className={`col-lg-6 ${styles.privateHeaderfilters}`}>

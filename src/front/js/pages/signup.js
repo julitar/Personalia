@@ -1,7 +1,9 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
-import girl_signup from "../../img/girl_signup.png";
+import signup from "../../img/signup.jpg";
+import styles from "../../styles/signup.module.css"
+
 
 import "../../styles/home.css";
 
@@ -66,7 +68,7 @@ export const Signup = () => {
 				<div className="col-10 mb-4 border rounded-3">
 					<div className="row justify-content-center">
 						<div className="col-6 text-center image-container">
-							<img src={girl_signup} alt="girl_signup" width="450" data-bs-toggle="tooltip" title="Phone illustrations by Storyset"/>
+							<img src={signup} alt="girl_signup" width="450" data-bs-toggle="tooltip" title="Phone illustrations by Storyset"/>
 						</div>
 						<div className="col-6 p-5">
 							<h1 className="display-5 fw-bold">Sign up!</h1>
