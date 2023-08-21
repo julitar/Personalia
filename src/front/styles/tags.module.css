@@ -1,0 +1,53 @@
+.privateImage {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.headTitle{
+    color: var(--color-secondary);
+    font-family: 'Julius Sans One', sans-serif;
+    font-size: 32px;
+    letter-spacing: 5px;
+}
+
+.privateHeaderfilters {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.privateOptions{
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.buttonPrimary{
+    background-color: var(--color-primary);
+    color: var(--button-text-color);
+    font-family: "Raleway-Bold", Helvetica;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    border: none;
+}
+
+.buttonPrimary:hover{
+    background-color: var(--hover-color);
+    color: var(--button-text-color);
+    border: none;
+}
+
+.contact{
+    display: flex;
+}
+
+
+.privateContainer{
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+

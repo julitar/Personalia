@@ -4,6 +4,14 @@
     object-fit: cover;
     object-position: center;
 }
+
+.headTitle{
+    color: var(--color-secondary);
+    font-family: 'Julius Sans One', sans-serif;
+    font-size: 32px;
+    letter-spacing: 5px;
+}
+
 .privateHeaderfilters {
     display: flex;
     flex-direction: column;
@@ -16,22 +24,38 @@
     justify-content: space-around;
     text-align: center;
 }
-.newContactButton{
-    width: 100%;
+
+.buttonPrimary{
+    background-color: var(--color-primary);
+    color: var(--button-text-color);
+    font-family: "Raleway-Bold", Helvetica;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    border: none;
+
 }
-.manageTagsButtton{
-    width: 100%;
+
+.buttonPrimary:hover{
+    background-color: var(--hover-color);
+    color: var(--button-text-color);
+    border: none;
 }
+
 .contact{
     display: flex;
 }
+
 .buttonsContainer{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
-.button{
-    border: 1px solid var(--border-color);
+
+.buttonPencil{
+    border: none;
+    background-color: var(--color-secondary);
+    color: var(--alternative-background);
     padding: 16px 8px;
     width: 46px !important;
     font-size: x-large;
@@ -39,8 +63,30 @@
     border-top-left-radius: 0; /* Anula el radio de borde en la esquina superior derecha */
     border-bottom-left-radius: 0;
 }
-.button:hover{
-    border: 2px solid var(--hover-color);
+
+.buttonPencil:hover{
+    color: var(--color-primary);
+    border: none;
+    border-left: none; /* Quita el borde en el lado derecho */
+    border-top-left-radius: 0; /* Anula el radio de borde en la esquina superior derecha */
+    border-bottom-left-radius: 0;
+}
+
+.buttonDelete{
+    border: none;
+    background-color: var(--color-tertiary);
+    color: var(--alternative-background);
+    padding: 16px 8px;
+    width: 46px !important;
+    font-size: x-large;
+    border-left: none; /* Quita el borde en el lado derecho */
+    border-top-left-radius: 0; /* Anula el radio de borde en la esquina superior derecha */
+    border-bottom-left-radius: 0;
+}
+
+.buttonDelete:hover{
+    color: var(--color-tertiary);
+    border: none;
     border-left: none; /* Quita el borde en el lado derecho */
     border-top-left-radius: 0; /* Anula el radio de borde en la esquina superior derecha */
     border-bottom-left-radius: 0;
@@ -50,6 +96,4 @@
     background-color: var(--background-color);
     color: var(--text-color);
 }
-.headTitle{
-    color: var(--color-secundary)
-}
+

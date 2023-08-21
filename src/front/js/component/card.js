@@ -5,7 +5,7 @@ import styles from "../../styles/card.module.css"
 export const Card = () => {
 	return (
         <>
-		<div className={`card mb-3 mt-3 ${styles.card}`} >
+		<div className={`card mb-3 mt-3 shadow ${styles.card}`} >
             <div className="row g-0">
                 <div className={`col-5 ${styles.cardImageDiv}`}>
                     <img 
