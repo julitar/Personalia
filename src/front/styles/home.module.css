@@ -6,12 +6,13 @@
 .header{
     color: var(--color-secondary);
     font-size: 28px;
-
 }
 
 .text{
     color: var(--text-color);
-    font-size: 16px;
+    font-size: 14px;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 300;
 }
 
 .title{
@@ -23,7 +24,7 @@
 
 .my_label{
     font-style: italic;
-    color: var(--text-color);
+    color: #202020;
 }
 
 .container_signup{
@@ -45,6 +46,7 @@
     font-size: 20px;
     font-weight: 700;
     letter-spacing: 6px;
+    width: 100%;
 }
 
 .buttonTertiary:hover{
@@ -73,4 +75,3 @@
     height: 100%;
     margin: none;
 }
-

@@ -10,7 +10,9 @@
 
 .text{
     color: var(--text-color) !important;
-    font-size: 16px;
+    font-size: 14px;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 300;
 }
 
 .title{
@@ -22,7 +24,7 @@
 
 .my_label{
     font-style: italic;
-    color: var(--text-color);
+    color: #202020;
 }
 
 .outlineButtonTertiary{
