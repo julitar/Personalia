@@ -18,7 +18,7 @@ export const Home = () => {
 		try {
 			await actions.login(email, password);
 			console.log("Login successful. Token:", store.token);
-			navigate("/");
+			navigate("/private");
 		  } catch (error) {
 			console.error("Login failed:", error);
 		  }
@@ -35,7 +35,7 @@ export const Home = () => {
 				<div class="col-10 mb-4 border rounded-3">
 					<div className="row justify-content-center">
 						<div className="col-sm-6 text-center p-0 d-none d-sm-block">
-							<img src={login} alt="" className={`img-fluid rounded-start ${styles.myImg}`}/>
+							<img src={login} alt="login_img" className={`img-fluid rounded-start ${styles.myImg}`}/>
 						</div>
 						<div className="col-sm-6 col-12 p-5">
 							<h1 className={`display-5 fw-bold ${styles.title}`}>Log in</h1>

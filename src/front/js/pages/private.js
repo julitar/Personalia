@@ -11,10 +11,10 @@ export const Private = () => {
 
 	return (
 		<div className={`container ${styles.privateContainer}`}>
-            <div className="row privateHeader">
+            <div className="row privateHeader  mt-4">
                 <div className="col-lg-3">
                     <div>
-                        <img className={styles.privateImage} src={privateimg} />
+                        <img className={`${styles.privateImage} rounded-3`} src={privateimg} />
                     </div>
                 </div>
                 <div className={`col-lg-6 ${styles.privateHeaderfilters}`}>
@@ -33,11 +33,11 @@ export const Private = () => {
                 </div>
                 <div className={`col-lg-3 ${styles.privateOptions}`}>
                     <div className="newContactButton">
-                        <button type="button" className={`btn btn-light ${styles.newContactButton}`} >New Contact</button>
+                        <button type="button" className={`btn btn-light px-4 ${styles.buttonPrimary}`} >New Contact</button>
 
                     </div>
                     <div className="manageTags">
-                        <button type="button" className={`btn btn-light ${styles.manageTagsButtton}`}>Manage Tags</button>
+                        <button type="button" className={`btn btn-light px-4 ${styles.buttonPrimary}`}>Manage Tags</button>
                         
                     </div>
                 </div>
@@ -46,10 +46,10 @@ export const Private = () => {
                 <div className={`col-md-6 ${styles.contact}`}>
                     <Card />
                     <div className={` ${styles.buttonsContainer} mt-3 mb-3`}>
-                        <button className={`btn btn-light ${styles.button}`}>
+                        <button className={`btn btn-light ${styles.buttonPencil}`}>
                             <i className="fa-solid fa-pen-to-square"></i>
                         </button>
-                        <button className={`btn btn-light ${styles.button}`}>
+                        <button className={`btn btn-light ${styles.buttonDelete}`}>
                             <i className="fa-regular fa-trash-can"></i>
                         </button>
                     </div>
@@ -57,10 +57,10 @@ export const Private = () => {
                 <div className={`col-md-6 ${styles.contact}`}>
                     <Card />
                     <div className={` ${styles.buttonsContainer} mt-3 mb-3`}>
-                        <button className={`btn btn-light ${styles.button}`}>
+                        <button className={`btn btn-light ${styles.buttonPencil}`}>
                             <i className="fa-solid fa-pen-to-square"></i>
                         </button>
-                        <button className={`btn btn-light ${styles.button}`}>
+                        <button className={`btn btn-light ${styles.buttonDelete}`}>
                             <i className="fa-regular fa-trash-can"></i>
                         </button>
                     </div>
@@ -68,10 +68,10 @@ export const Private = () => {
                 <div className={`col-md-6 ${styles.contact}`}>
                     <Card />
                     <div className={` ${styles.buttonsContainer} mt-3 mb-3`}>
-                        <button className={`btn btn-light ${styles.button}`}>
+                        <button className={`btn btn-light ${styles.buttonPencil}`}>
                             <i className="fa-solid fa-pen-to-square"></i>
                         </button>
-                        <button className={`btn btn-light ${styles.button}`}>
+                        <button className={`btn btn-light ${styles.buttonDelete}`}>
                             <i className="fa-regular fa-trash-can"></i>
                         </button>
                     </div>
@@ -79,10 +79,10 @@ export const Private = () => {
                 <div className={`col-md-6 ${styles.contact}`}>
                     <Card />
                     <div className={` ${styles.buttonsContainer} mt-3 mb-3`}>
-                        <button className={`btn btn-light ${styles.button}`}>
+                        <button className={`btn btn-light ${styles.buttonPencil}`}>
                             <i className="fa-solid fa-pen-to-square"></i>
                         </button>
-                        <button className={`btn btn-light ${styles.button}`}>
+                        <button className={`btn btn-light ${styles.buttonDelete}`}>
                             <i className="fa-regular fa-trash-can"></i>
                         </button>
                     </div>
