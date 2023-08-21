@@ -69,7 +69,7 @@ export const Home = () => {
 					</div>
 					<div className="d-flex col-lg-4 col-sm-12 justify-content-center align-items-center">
 						<Link to="/signup">
-							<button className={`btn btn-lg px-4 ${styles.buttonTertiary}`} type="button">Sign up!</button>
+							<button className={`btn ${styles.buttonTertiary}`} type="button">Sign up!</button>
 						</Link>
 					</div>
 				</div>
