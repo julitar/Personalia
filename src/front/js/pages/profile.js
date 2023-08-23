@@ -4,6 +4,7 @@ import "../../styles/home.css";
 import styles from "../../styles/profile.module.css"
 import profile from "../../img/profile.jpg";
 import { Link } from "react-router-dom";
+import UserData from "../component/userdata";
 
 
 export const Profile = () => {
@@ -23,6 +24,11 @@ export const Profile = () => {
                 </div>
                 <div className={`col-lg-3 justify-content-center ${styles.privateOptions}`}>
                     <Link to="/"><button type="button" className={`btn btn-light mb-2 px-4 ${styles.buttonPrimary}`}>Back</button></Link>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-12">
+                    <UserData />
                 </div>
             </div>
             </div>

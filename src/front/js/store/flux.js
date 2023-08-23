@@ -3,7 +3,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			theme: "theme-light",
 			token: null,
-			
+			userData: [],
 		},
 		actions: {
 
@@ -69,6 +69,36 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error('Error:', error);
 				});
 			},
+
+			profile: async () => {
+				try {
+					const config = {
+						method: 'GET',
+						headers: {
+							Authorization: `Bearer ${localStorage.getItem("jwt-token")}`,
+						}
+					};
+			
+					const response = await fetch(process.env.BACKEND_URL + "/api/profile", config);
+			
+					if (!response.ok) {
+						throw new Error('Authentication error');
+					}
+			
+					const userData = await response.json();
+			
+					if (userData.Error) {
+						console.log('Error:', userData);
+						alert(userData.Error);
+					} else {
+						console.log('Success:', userData);
+						setStore({ userData : userData })
+					}
+				} catch (error) {
+					console.error('Error:', error);
+				}
+			},
+			
 			changeTheme: () => {
 				const store = getStore();
 				if (store.theme === "theme-light") {
