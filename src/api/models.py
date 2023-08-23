@@ -9,6 +9,7 @@ class User(db.Model):
     name = db.Column(db.String(50), unique=False, nullable=True) # No se piden en el registro
     lastname = db.Column(db.String(80), unique=False, nullable=True)
     birthdate = db.Column(db.Date, nullable=True)
+    contacts = db.relationship('Contact', backref='user', lazy=True)
 
     def serialize(self):
         return {
@@ -17,6 +18,7 @@ class User(db.Model):
             "name": self.name,
             "lastname": self.lastname,
             "birthdate": self.birthdate,
+            "contact": [contact.serialize() for contact in self.contacts],
         }
     
 # Relationships
@@ -44,6 +46,7 @@ class Contact(db.Model):
     photo = db.Column(db.String(150), unique=False, nullable=True)
     socialmedia = db.relationship('Social', secondary=contact_social, backref=db.backref('contacts', lazy='dynamic'))
     tags = db.relationship('Tag', secondary=contact_tag, backref=db.backref('contacts', lazy='dynamic'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def serialize(self):
         return {
@@ -56,7 +59,8 @@ class Contact(db.Model):
             "address": self.address,
             "company": self.company,
             "photo": self.photo,
-            "socialmedia": [social.serialize() for social in self.socialmedia]  # Serializar cada red social
+            "socialmedia": [social.serialize() for social in self.socialmedia],  # Serializar cada red social
+            "user_id": self.user_id
         }
 
 
