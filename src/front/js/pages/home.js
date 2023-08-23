@@ -32,7 +32,7 @@ export const Home = () => {
 					<h2 className={styles.header}>Welcome to our community of organized individuals!</h2>
 					<p className={styles.text}>Take control of your contacts and make managing them a breeze. Personalia allows you to effortlessly categorize, schedule, and connect with your contacts.</p>
 				</div>
-				<div class="col-10 mb-4 border rounded-3">
+				<div className="col-10 mb-4 border rounded-3">
 					<div className="row justify-content-center">
 						<div className="col-sm-6 text-center p-0 d-none d-sm-block">
 							<img src={login} alt="login_img" className={`img-fluid rounded-start ${styles.myImg}`}/>
