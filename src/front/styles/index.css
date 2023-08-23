@@ -24,6 +24,9 @@
     --hover-color:#666666;
     --button-text-color: #F9F2F2;
     --alternative-background: #F9F2F2;
+    --moon-color: #202020;
+    --sun-color: #fffffb;
+    --toogle-color:#8A4287; 
 }
   
 .theme-dark {
@@ -37,6 +40,9 @@
     --hover-color:#d9d9d9;
     --button-text-color: #202020;
     --alternative-background: #202020;
+    --moon-color: #fffffb;
+    --sun-color: #202020;
+    --toogle-color:#45b4d9; 
 }
   
 .body {

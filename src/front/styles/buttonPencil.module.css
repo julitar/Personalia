@@ -1,0 +1,19 @@
+.buttonPencil{
+    border: none;
+    background-color: var(--color-secondary);
+    color: var(--alternative-background);
+    padding: 16px 8px;
+    width: 46px !important;
+    font-size: x-large;
+    border-left: none; /* Quita el borde en el lado derecho */
+    border-top-left-radius: 0; /* Anula el radio de borde en la esquina superior derecha */
+    border-bottom-left-radius: 0;
+}
+
+.buttonPencil:hover{
+    color: var(--color-primary);
+    border: none;
+    border-left: none; /* Quita el borde en el lado derecho */
+    border-top-left-radius: 0; /* Anula el radio de borde en la esquina superior derecha */
+    border-bottom-left-radius: 0;
+}

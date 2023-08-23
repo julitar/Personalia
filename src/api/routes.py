@@ -58,3 +58,20 @@ def login():
     token = create_access_token(identity=user.id)
 
     return jsonify({"token": token}), 200
+
+
+@api.route('/user/contacts', methods=['GET'])
+@jwt_required()
+def user_contacts():
+    
+    user_id = get_jwt_identity()
+    
+    user = User.query.filter_by(id=user_id).first()
+    #print(user)
+    if user is None:
+        return jsonify({"message": "User not found"}), 404
+    user_contacts = Contact.query.filter_by(user_id=user.id).all()
+    #print(user_contacts)
+    serialized_contacts = [contact.serialize() for contact in user_contacts]
+    return jsonify({"contacts": serialized_contacts})
+    
