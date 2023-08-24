@@ -31,7 +31,7 @@
     border-color: var(--color-tertiary);
     background-color: var(--background-color);
     color: var(--color-tertiary);
-    font-family: "Raleway-Bold", Helvetica;
+    font-family: "Raleway", Helvetica;
     font-size: 18px;
     font-weight: 700;
     letter-spacing: 4px;
@@ -47,7 +47,7 @@
     border-color: var(--color-secondary);
     background-color: var(--background-color);
     color: var(--color-secondary);
-    font-family: "Raleway-Bold", Helvetica;
+    font-family: "Raleway", Helvetica;
     font-size: 18px;
     font-weight: 700;
     letter-spacing: 4px;

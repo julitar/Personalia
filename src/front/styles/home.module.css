@@ -42,7 +42,7 @@
 .buttonTertiary{
     background-color: var(--color-tertiary);
     color: var(--button-text-color);
-    font-family: "Raleway-Bold", Helvetica;
+    font-family: "Raleway", Helvetica;
     font-size: 20px;
     font-weight: 700;
     letter-spacing: 6px;
@@ -58,7 +58,7 @@
     border-color: var(--color-primary);
     background-color: var(--background-color);
     color: var(--color-primary);
-    font-family: "Raleway-Bold", Helvetica;
+    font-family: "Raleway", Helvetica;
     font-size: 18px;
     font-weight: 700;
     letter-spacing: 4px;

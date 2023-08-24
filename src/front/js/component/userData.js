@@ -10,6 +10,7 @@ export const UserData = () => {
     name: '',
     lastname: '',
     email: '',
+    birthdate: '',
   });
 
   const [currentPassword, setCurrentPassword] = useState();
@@ -23,7 +24,8 @@ export const UserData = () => {
       setFormData({
         name: store.userData.name || 'Your name',
         lastname: store.userData.lastname || 'Your lastame',
-        email: store.userData.email
+        email: store.userData.email,
+        birthdate: store.userData.birthdate,
       });
     };
     fetchProfileData();
@@ -86,131 +88,149 @@ export const UserData = () => {
   return (
 
     <>
-      <div className="container-fluid my-4">
+      <div className={`container-fluid my-4 ${styles.userContainer}`}>
 
         {/* {message && <div className="alert alert-warning" role="alert">{message}</div>} */}
-        <div className="row">
-          <div className="card col-lg-8 col-sm-12">
+        <div className="row justify-content-center m-auto">
+          <div className={`card col-lg-6 col-md-8 col-sm-10 ${styles.card}`}>
             <div className="card-body">
-              <h1>Your info</h1>
+              <h1 className={styles.title}>Your info</h1>
 
               <form className="row justify-content-center" onSubmit={handleSaveChanges}>
-                <div class="mb-3 row">
-                  <label htmlFor="name" className="col-sm-2 col-form-label my_label">Name</label>
-                  <div class="col-sm-10">
+                <div className="mb-3 row justify-content-center m-auto">
+                  <label htmlFor="name" className={`col-3 col-form-label ${styles.label}`}>Name</label>
+                  <div className="col-6">
                     {!editMode ? (
-                      <input className="my_input form-control" type="text" value={formData.name} readOnly />
+                      <input className={styles.my_input} type="text" value={formData.name} readOnly />
                     ) : (
                       <input
                         type="text"
                         name="name"
                         value={formData.name}
                         onChange={handleInputChange}
-                        className="my_input form-control"
+                        className={styles.my_input}
                       />
                     )}
                   </div>
                 </div>
-                <div class="mb-3 row">
-                  <label htmlFor="lastname" className="col-sm-2 col-form-label my_label">Lastname</label>
-                  <div class="col-sm-10">
+                <div className="mb-3 row justify-content-center m-auto">
+                  <label htmlFor="lastname" className={`col-3 col-form-label ${styles.label}`}>Lastname</label>
+                  <div className="col-6">
                     {!editMode ? (
-                      <input className="my_input form-control" type="text" value={formData.lastname} readOnly />
+                      <input className={styles.my_input} type="text" value={formData.lastname} readOnly />
                     ) : (
                       <input
                         type="text"
                         name="lastname"
                         value={formData.lastname}
                         onChange={handleInputChange}
-                        className="my_input form-control"
+                        className={styles.my_input}
                       />
                     )}
                   </div>
                 </div>
 
-                <div class="mb-3 row">
-                  <label htmlFor="email" className="col-sm-2 col-form-label my_label">Email</label>
-                  <div class="col-sm-10">
+                <div className="mb-3 row justify-content-center m-auto">
+                  <label htmlFor="email" className={`col-3 col-form-label ${styles.label}`}>Email</label>
+                  <div className="col-6">
                     {!editMode ? (
-                      <input className="my_input form-control" type="email" value={formData.email} readOnly />
+                      <input className={styles.my_input} type="email" value={formData.email} readOnly />
                     ) : (
                       <input
                         type="text"
                         name="email"
                         value={formData.email}
                         onChange={handleInputChange}
-                        className="my_input form-control"
+                        className={styles.my_input}
                       />
                     )}
                   </div>
                 </div>
 
-                <div class="mb-3 row">
-                  <label htmlFor="birthdate" className="col-sm-2 col-form-label my_label">Birthdate</label>
-                  <div class="col-sm-10">
-                    {!editMode ? (
-                      <input className="my_input form-control" type="date" value={formData.birthdate} readOnly />
-                    ) : (
-                      <input
-                        type="text"
-                        name="birthdate"
-                        value={formData.birthdate}
-                        onChange={handleInputChange}
-                        className="my_input form-control"
-                      />
-                    )}
+                <div className="mb-3 row justify-content-center m-auto">
+                  <label htmlFor="birthdate" className={`col-3 col-form-label ${styles.label}`}>Birthdate</label>
+                  <div className="col-6">
+
+
+                    <input
+                      type="text"
+                      name="birthdate"
+                      value={formData.birthdate}
+                      readOnly={!editMode}
+                      onChange={handleInputChange}
+                      className={`${styles.my_input} border-bottom`}
+                    />
+
+
                   </div>
                 </div>
               </form>
             </div>
           </div>
 
-          <div className="col-lg-4 col-sm-12 d-flex flex-column justify-content-end">
-            <button className="btn btn-primary m-3">Change password</button>
+          <div className="col-lg-3 col-sm-12 d-flex flex-column align-items-center justify-content-md-end align-items-md-start text-center">
+            <button className={`mb-3 mt-3 mt-md-0 ${styles.outlineButtonSecondary}`}>Change password</button>
 
             {editMode ? (
-              <button className="btn btn-primary m-3" onClick={handleSaveChanges}>Save data</button>
+              <button className={styles.outlineButtonSecondary} onClick={handleSaveChanges}>Save data</button>
             ) : (
-              <button className="btn btn-primary m-3" onClick={() => setEditMode(true)}>Edit data</button>)
+              <button className={styles.outlineButtonSecondary} onClick={() => setEditMode(true)}>Edit data</button>)
             }
           </div>
-        </div>
+        </div >
 
         {/* cambio de contraseña */}
 
-        <div className="modal-password">
-          <div className="my-2">
-            <input
-              type="password"
-              placeholder="Current password"
-              value={currentPassword}
-              onChange={(e) => setCurrentPassword(e.target.value)}
-              className="my_input form-control"
-            />
-          </div>
-          <div className="my-2">
-            <input
-              type="password"
-              placeholder="New password"
-              value={newPassword}
-              onChange={(e) => setNewPassword(e.target.value)}
-              className="my_input form-control"
-            />
-          </div>
-          <div className="my-2">
-            <input
-              type="password"
-              placeholder="Confirm new password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              className="my_input form-control"
-            />
-          </div>
-          <button className="btn btn-primary m-3">Cancel</button>
-          <button className="btn btn-primary m-3" onClick={handleChangePassword}>Save</button>
-        </div>
+        <div className="modal-password my-5">
+          <h1 className={styles.titlepassword}>Change password</h1>
+          <div className="row">
 
-      </div>
+            <div className="mb-3 row justify-content-center m-auto">
+              <label htmlFor="currentPassword" className={`col-3 col-form-label ${styles.label}`}>Current password</label>
+              <div className="col-6">
+                <input
+                  type="password"
+                  name="currentPassword"
+                  value={currentPassword}
+                  onChange={(e) => setCurrentPassword(e.target.value)}
+                  className={styles.my_input}
+                />
+              </div>
+            </div>
+
+            <div className="mb-3 row justify-content-center m-auto">
+              <label htmlFor="newPassword" className={`col-3 col-form-label ${styles.label}`}>Current password</label>
+              <div className="col-6">
+                <input
+                  type="password"
+                  name="newPassword"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                  className={styles.my_input}
+                />
+              </div>
+            </div>
+
+            <div className="mb-3 row justify-content-center m-auto">
+              <label htmlFor="confirmPassword" className={`col-3 col-form-label ${styles.label}`}>Confirm password</label>
+              <div className="col-6">
+                <input
+                  type="password"
+                  name="confirmPassword"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  className={styles.my_input}
+                />
+              </div>
+            </div>
+
+            <div className="row justify-content-center">
+              <button className={`mx-4 ${styles.outlineButtonTertiary}`}>Cancel</button>
+              <button className={styles.buttonTertiary} onClick={handleChangePassword}>Save</button>
+            </div>
+          </div >
+        </div>
+      </div >
     </>
 
   );

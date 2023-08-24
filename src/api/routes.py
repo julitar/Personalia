@@ -85,8 +85,19 @@ def private():
 
     if not user:
         return jsonify({"message": "Error, user not found"}), 400
+    
+    formatted_birthdate = user.birthdate.strftime('%d/%m/%Y') if user.birthdate else None
 
-    return jsonify(user.serialize()), 200
+    serialized_user = {
+        'id': user.id,
+        'name': user.name,
+        'lastname': user.lastname,
+        'email': user.email,
+        'birthdate': formatted_birthdate,
+    }
+
+    return jsonify(serialized_user), 200
+
 
 
 @api.route('/profile', methods=['PUT'])
