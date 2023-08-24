@@ -94,6 +94,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
+			userData: async (formData) => {
+				try {
+					const response = await fetch(process.env.BACKEND_URL + "/api/profile", {
+						method: "PUT",
+						headers: {
+							"Content-Type": "application/json",
+							"Authorization": "Bearer " + localStorage.getItem("jwt-token")
+						},
+						body: JSON.stringify(formData),
+					});
+
+					if (!response.ok) {
+						throw new Error("We couldn't save your changes");
+					}
+					alert("Changes saved successfuly")
+
+				} catch (error) {
+					console.error(error);
+					alert(error)
+				}
+			},
+
 			changeTheme: () => {
 				const store = getStore();
 				if (store.theme === "theme-light") {
