@@ -36,7 +36,7 @@
 .buttonPrimary{
     background-color: var(--color-primary);
     color: var(--button-text-color);
-    font-family: "Raleway-Bold", Helvetica;
+    font-family: "Raleway", Helvetica;
     font-size: 14px;
     font-weight: 500;
     letter-spacing: 4px;
