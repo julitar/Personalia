@@ -4,6 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			theme: "theme-light",
 			token: null,
 			userData: [],
+			userTags: [],
 		},
 
 		actions: {
@@ -115,6 +116,53 @@ const getState = ({ getStore, getActions, setStore }) => {
 					alert(error)
 				}
 			},
+
+
+			newTag: async (tag) => {
+				try {
+					const response = await fetch(process.env.BACKEND_URL + "/api/tags", {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+							"Authorization": "Bearer " + localStorage.getItem("jwt-token")
+						},
+						body: JSON.stringify(tag),
+					});
+
+					if (!response.ok) {
+						throw new Error("Create tag failed");
+					}
+					alert("New tag created successfuly")
+
+				} catch (error) {
+					console.error(error);
+					alert(error)
+				}
+			},
+
+			showTags: async () => {
+				try {
+					const response = await fetch(process.env.BACKEND_URL + "/api/tags", {
+						method: "GET",
+						headers: {
+							"Authorization": "Bearer " + localStorage.getItem("jwt-token")
+						},
+					});
+
+					const data = await response.json();
+
+					if (response.status === 200) {
+						console.log(data)
+						setStore({ userTags: data })
+
+					} else {
+						console.error('Error:', response.statusText);
+					}
+				} catch (error) {
+					console.error('Error:', error);
+				}
+			},
+
 
 			changeTheme: () => {
 				const store = getStore();
