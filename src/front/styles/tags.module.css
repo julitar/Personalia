@@ -135,7 +135,6 @@
 }
 
 .item {
-    color: var(--text-color);
     font-size: 14px;
     font-family: 'Work Sans', sans-serif;
     font-weight: 400;
@@ -148,4 +147,102 @@ ul{
     margin: 0;
     padding: 0;
     list-style: none;
+}
+
+.item_button{
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 0;
+    color: var(--text-color);
+}
+
+
+
+/* Modal Styles */
+
+.modal{
+    background-color: var(--background-color);
+    border: 1px solid var(--text-color);
+}
+
+.close_button{
+    color: var(--text-color);
+    background-color: var(--background-color);
+    border: none;
+    font-size: 24px;
+}
+
+.buttonTertiary{
+    background-color: var(--color-tertiary);
+    color: var(--button-text-color);
+    font-family: "Raleway", Helvetica;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    border-radius: 30px;
+    height: 40px;
+    width: 200px;
+    border: none;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.buttonTertiary:hover{
+    background-color: var(--hover-color);
+    color: var(--button-text-color);
+    border: 1px solid var(--button-text-color);
+}
+
+.buttonTertiary:active {
+    transform: translateY(2px);
+  }
+
+
+.edittag_input {
+    border: none;
+    border-bottom: 1px solid var(--color-tertiary);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-size: 14px;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 300;
+}
+
+.edittag_input:focus{
+    border-bottom: 2px solid var(--hover-color);
+    outline: none;
+}
+
+
+.outlineButtonTertiary2{
+    border: 1px solid var(--color-tertiary);
+    background-color: var(--background-color);
+    color: var(--color-tertiary);
+    font-family: "Raleway", Helvetica;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    border-radius: 30px;
+    height: 40px;
+    width: 200px;
+}
+
+.outlineButtonTertiary2:hover{
+    background-color: var(--background-color);
+    color: var(--hover-color);
+    border-color: var(--hover-color);
+}
+
+.outlineButtonTertiary2:active {
+    transform: translateY(2px);
+  }
+
+.modal_title {
+    color: var(--color-tertiary);
+    font-family: 'Julius Sans One', sans-serif;
+    font-size: 32px;
+    letter-spacing: 5px;
+    font-weight: 600;
 }

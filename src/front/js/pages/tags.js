@@ -9,10 +9,11 @@ import { Link } from "react-router-dom";
 export const Tags = () => {
     const { store, actions } = useContext(Context);
     const [newTag, setNewTag] = useState('')
+    const [selectedTag, setSelectedTag] = useState(null);
 
     useEffect(() => {
         actions.showTags()
-    }, [store.userTags])
+    }, [])
 
     const submitNewTag = () => {
         if (newTag.trim() !== '') {
@@ -49,12 +50,15 @@ export const Tags = () => {
 
                     <ul>
                         {store.userTags.map((tag) => (
-                            <li className={styles.item} key={tag.id}>{tag.name}</li>
+                            <li className={styles.item} key={tag.id}>
+                                <button className={styles.item_button} data-bs-toggle="modal" data-bs-target="#editTag">{tag.name}</button>
+                            </li>
                         ))}
                     </ul>
 
                     <p className={styles.smalltext}>Click to edit or delete a tag</p>
                 </div>
+
 
                 {/* componente para crear tags */}
                 <div className="col-lg-4 col-sm-10 m-auto">
@@ -73,7 +77,41 @@ export const Tags = () => {
                         </div>
                     </div>
                 </div>
+
+
+                {/*-- Modal --*/}
+                <div className="modal fade" id="editTag" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div className="modal-dialog modal-dialog-centered">
+                        <div className={`${styles.modal} modal-content`}>
+                            <div className="col d-flex justify-content-end">
+                                <button className={`${styles.close_button} m-2`} data-bs-dismiss="modal" aria-label="Close"><i className="fa-regular fa-circle-xmark"></i></button>
+                            </div>
+                            <div className="modal-body justify-content-center">
+                                <h1 className={`fs-5 mb-2 text-center ${styles.modal_title}`} id="exampleModalLabel">Edit tag</h1>
+                                <div className="p-4 text-center">
+                                    <input
+                                        className={styles.edittag_input}
+                                        type="text"
+                                        name="tag"
+                                    />
+                                    <i className={`fa-solid fa-pen ${styles.icon}`}></i>
+                                </div>
+                            </div>
+
+                            <div className="row justify-content-center">
+                                <button className={`mx-4 ${styles.outlineButtonTertiary2}`}>Delete Tag <i className="fa-solid fa-trash"></i></button>
+                            </div>
+
+                            <div className="row justify-content-center">
+                                <button className={styles.buttonTertiary}>Save Changes</button>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
             </div>
-        </div>
+        </div >
     );
 }
