@@ -10,6 +10,7 @@ export const Tags = () => {
     const { store, actions } = useContext(Context);
     const [newTag, setNewTag] = useState('')
     const [selectedTag, setSelectedTag] = useState(null);
+    const [tagName, setTagName] = useState('');
 
     useEffect(() => {
         actions.showTags()
@@ -23,6 +24,61 @@ export const Tags = () => {
             alert('Please enter a valid tag name');
         }
     }
+
+    const handleDelete = (tag_id) => {
+        actions.deleteTag(tag_id);
+    }
+
+    const openEditModal = async (tagId) => {
+        setSelectedTag(tagId);
+
+        try {
+            const response = await fetch(`${process.env.BACKEND_URL}/api/tags/${tagId}`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem("jwt-token")}`
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to fetch tag details');
+            }
+
+            const tagDetails = await response.json();
+            setTagName(tagDetails.name);
+        } catch (error) {
+            console.error('Error fetching tag details:', error);
+        }
+    }
+
+    const handleSaveChanges = async (tag_id) => {
+
+        if (tag_id && tagName.trim() !== '') {
+            try {
+                const response = await fetch(`${process.env.BACKEND_URL}/api/tags/${tag_id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${localStorage.getItem("jwt-token")}`
+                    },
+                    body: JSON.stringify({ name: tagName })
+                });
+
+                actions.showTags();
+                console.log(`Tag ${selectedTag} updated successfully`);
+                alert("Tag updated successfully");
+
+            } catch (error) {
+                console.error(error);
+                alert(error);
+            }
+        } else {
+            alert('Please provide a valid tag name');
+        }
+    }
+
+
+
 
     return (
         <div className={`container ${styles.tagsContainer}`}>
@@ -45,13 +101,19 @@ export const Tags = () => {
             <div className="row mt-3">
                 {/* componente para mostrar tags */}
 
-                <div className={`col-lg-6 col-sm-10 m-auto my-4 ${styles.tags_jumbotron}`}>
+                <div className={`col-lg-6 col-sm-10 m-auto ${styles.tags_jumbotron}`}>
                     <h1 className={`mb-2 text-center ${styles.yourtags_title}`}>Your tags</h1>
 
                     <ul>
                         {store.userTags.map((tag) => (
                             <li className={styles.item} key={tag.id}>
-                                <button className={styles.item_button} data-bs-toggle="modal" data-bs-target="#editTag">{tag.name}</button>
+                                <button
+                                    className={styles.item_button}
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#editTag"
+                                    onClick={() => openEditModal(tag.id)}>
+                                    {tag.name}
+                                </button>
                             </li>
                         ))}
                     </ul>
@@ -93,23 +155,28 @@ export const Tags = () => {
                                         className={styles.edittag_input}
                                         type="text"
                                         name="tag"
+                                        value={tagName}
+                                        onChange={(e) => setTagName(e.target.value)}
                                     />
                                     <i className={`fa-solid fa-pen ${styles.icon}`}></i>
                                 </div>
                             </div>
 
                             <div className="row justify-content-center">
-                                <button className={`mx-4 ${styles.outlineButtonTertiary2}`}>Delete Tag <i className="fa-solid fa-trash"></i></button>
+                                <button onClick={() => (handleDelete(selectedTag))} data-bs-dismiss="modal" className={`mx-4 ${styles.outlineButtonTertiary2}`}>Delete Tag <i className="fa-solid fa-trash"></i></button>
                             </div>
 
                             <div className="row justify-content-center">
-                                <button className={styles.buttonTertiary}>Save Changes</button>
+                                <button className={styles.buttonTertiary} data-bs-dismiss="modal" onClick={() => (handleSaveChanges(selectedTag))}>Save Changes</button>
                             </div>
-
 
                         </div>
                     </div>
                 </div>
+
+            </div>
+
+            <div className={`${styles.space} col-12`}>
 
             </div>
         </div >

@@ -226,3 +226,23 @@ def delete_tag(tag_id):
     return jsonify({"message": "tag deleted" }), 200
 
 
+@api.route('/tags/<int:tag_id>', methods=['GET'])
+@jwt_required()
+def show_tag(tag_id):
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+
+    if not user:
+        return jsonify({"message": "User not found"}), 404
+    tag = Tag.query.filter_by(id=tag_id, user_id=user_id).first()
+
+    if not tag:
+        return jsonify({"message": "Tag not found"}), 404
+
+    serialized_tag = {
+        'id': tag.id,
+        'name': tag.name,
+    }
+
+    return jsonify(serialized_tag), 200
+

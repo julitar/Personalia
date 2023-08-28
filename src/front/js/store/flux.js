@@ -119,6 +119,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 			newTag: async (tag) => {
+
+				const actions = getActions()
+
 				try {
 					const response = await fetch(process.env.BACKEND_URL + "/api/tags", {
 						method: "POST",
@@ -132,6 +135,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (!response.ok) {
 						throw new Error("Create tag failed");
 					}
+
+					actions.showTags();
 					alert("New tag created successfuly")
 
 				} catch (error) {
@@ -160,6 +165,32 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				} catch (error) {
 					console.error('Error:', error);
+				}
+			},
+
+			deleteTag: async (tag_id) => {
+
+				const actions = getActions()
+
+				try {
+					const response = await fetch(process.env.BACKEND_URL + `/api/tags/${tag_id}`, {
+						method: "DELETE",
+						headers: {
+							"Authorization": "Bearer " + localStorage.getItem("jwt-token")
+						},
+					});
+
+					if (!response.ok) {
+						throw new Error("Delete tag failed");
+					}
+
+					actions.showTags();
+					console.log(`Tag id ${tag_id} deleted successfully`);
+					alert("Tag deleted successfully")
+
+				} catch (error) {
+					console.error(error);
+					alert(error)
 				}
 			},
 
