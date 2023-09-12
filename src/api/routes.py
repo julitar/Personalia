@@ -87,8 +87,19 @@ def private():
 
     if not user:
         return jsonify({"message": "Error, user not found"}), 400
+    
+    formatted_birthdate = user.birthdate.strftime('%d/%m/%Y') if user.birthdate else None
 
-    return jsonify(user.serialize()), 200
+    serialized_user = {
+        'id': user.id,
+        'name': user.name,
+        'lastname': user.lastname,
+        'email': user.email,
+        'birthdate': formatted_birthdate,
+    }
+
+    return jsonify(serialized_user), 200
+
 
 
 @api.route('/profile', methods=['PUT'])
@@ -177,3 +188,95 @@ def edit_contact(contact_id):
     db.session.commit()
     
     return jsonify({"message": "Contact updated successfully"}), 200
+# Manage tags
+
+@api.route('/tags', methods=['POST'])
+@jwt_required()  
+def create_tag():
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+
+    if not user:
+        return jsonify({"message": "User not found"}), 404
+
+    tag_data = request.json
+    new_tag = Tag(name=tag_data['name'], user=user)
+    db.session.add(new_tag)
+    db.session.commit()
+
+    return jsonify(new_tag.serialize()), 201
+
+
+@api.route('/tags', methods=['GET'])
+@jwt_required()
+def get_tags():
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+
+    if not user:
+        return jsonify({"message": "User not found"}), 404
+
+    tags = user.tags.all() 
+    serialized_tags = [tag.serialize() for tag in tags]
+
+    return jsonify(serialized_tags), 200
+
+@api.route('/tags/<int:tag_id>', methods=['PUT'])
+@jwt_required()
+def update_tag(tag_id):
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+
+    if not user:
+        return jsonify({"message": "User not found"}), 404
+
+    tag = Tag.query.filter_by(id=tag_id, user_id=user_id).first()
+
+    if not tag:
+        return jsonify({"message": "Tag not found"}), 404
+
+    tag_data = request.json
+    tag.name = tag_data['name']
+    db.session.commit()
+
+    return jsonify(tag.serialize()), 200
+
+@api.route('/tags/<int:tag_id>', methods=['DELETE'])
+@jwt_required()
+def delete_tag(tag_id):
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+
+    if not user:
+        return jsonify({"message": "User not found"}), 404
+    tag = Tag.query.filter_by(id=tag_id, user_id=user_id).first()
+
+    if not tag:
+        return jsonify({"message": "Tag not found"}), 404
+
+    db.session.delete(tag)
+    db.session.commit()
+
+    return jsonify({"message": "tag deleted" }), 200
+
+
+@api.route('/tags/<int:tag_id>', methods=['GET'])
+@jwt_required()
+def show_tag(tag_id):
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+
+    if not user:
+        return jsonify({"message": "User not found"}), 404
+    tag = Tag.query.filter_by(id=tag_id, user_id=user_id).first()
+
+    if not tag:
+        return jsonify({"message": "Tag not found"}), 404
+
+    serialized_tag = {
+        'id': tag.id,
+        'name': tag.name,
+    }
+
+    return jsonify(serialized_tag), 200
+
