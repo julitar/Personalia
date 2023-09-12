@@ -5,6 +5,8 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Contact, Tag, Social
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
+from datetime import datetime
+
 
 import bcrypt
 salt = bcrypt.gensalt()
@@ -70,7 +72,7 @@ def user_contacts():
     #print(user)
     if user is None:
         return jsonify({"message": "User not found"}), 404
-    user_contacts = Contact.query.filter_by(user_id=user.id).all()
+    user_contacts = Contact.query.filter_by(user_id=user.id).order_by(Contact.name.asc()).all()
     #print(user_contacts)
     serialized_contacts = [contact.serialize() for contact in user_contacts]
     return jsonify({"contacts": serialized_contacts})
@@ -141,3 +143,37 @@ def change_password():
         
     except Exception as e:
         return jsonify({'message': 'password change failed', 'error': str(e)}), 500
+
+
+@api.route('/user/contacts/<int:contact_id>', methods=['PUT'])
+@jwt_required()
+def edit_contact(contact_id):
+    user_id = get_jwt_identity()
+    print(user_id)
+    
+    user = User.query.filter_by(id=user_id).first()
+    if user is None:
+        return jsonify({"message": "User not found"}), 404
+    
+    contact = Contact.query.filter_by(id=contact_id, user_id=user.id).first()
+    if contact is None:
+        return jsonify({"message": "Contact not found or not associated with the user"}), 404
+    
+    data = request.json
+    print(data)
+    contact.name = data.get('name', contact.name)
+    contact.lastname = data.get('lastname', contact.lastname)
+    contact.company = data.get('company', contact.company)
+    contact.phone = data.get('phone', contact.phone)
+    if contact.phone is not None:
+        contact.phone = int(contact.phone)
+    contact.email = data.get('email', contact.email)
+    contact.socialmedia = data.get('socialmedia', contact.socialmedia)
+    contact.birthdate = data.get('birthdate', contact.birthdate)
+    if contact.birthdate is not None:
+        contact.birthdate = datetime.strptime(contact.birthdate, '%Y-%m-%d').date()
+
+  
+    db.session.commit()
+    
+    return jsonify({"message": "Contact updated successfully"}), 200

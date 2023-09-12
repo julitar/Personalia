@@ -58,7 +58,33 @@
     transform: translateX(-100%);
     background: var(--toogle-color);
     /* linear-gradient(180deg, #777, #3a3a3a); */
-  }
-  .title{
+}
+.title{
     color: var(--color-primary);
-  }
+}
+.menuLink{
+    text-decoration: none;
+    color: var(--text-color);
+    text-align: center;
+    font-family: Julius Sans One;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 2.2px;
+}
+.offcanvas{
+    background: var(--background-color);
+}
+.buttonClose{
+    color: var(--text-color);
+    font-size: 22px;
+}
+.offcanvasBody{
+    justify-content: space-around;
+    display: flex;
+    flex-direction: column;
+    /* height: 80%; */
+    padding: 0 0 50% 0;
+}
+

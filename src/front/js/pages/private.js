@@ -6,36 +6,38 @@ import { Card } from "../component/card";
 import privateimg from "../../img/privateimg.jpg";
 import { ButtonPencil } from "../component/buttonPencil";
 import { ButtonDelete } from "../component/buttonDelete";
+import { EditContactModal } from "../component/editContactModal";
+import { createPortal } from "react-dom";
 
 
 export const Private = () => {
     const { store, actions } = useContext(Context);
     const [contacts, setContacts] = useState([]);
 
-    useEffect(() => {
-        console.log(store)
-        const getContacts = async () => {
-            try {
-                const response = await fetch(process.env.BACKEND_URL + '/api/user/contacts', {
-                    method: 'GET',
-                    headers: {
-                        "Authorization": "Bearer " + localStorage.getItem("jwt-token")
-                    }
-                });
-
-                const data = await response.json()
-
-                if (response.status === 200) {
-                    console.log(data)
-                    setContacts(data.contacts);
-                } else {
-                    console.error('Error fetching contacts:', response.statusText);
+    const getContacts = async () => {
+        try {
+            const response = await fetch(process.env.BACKEND_URL + '/api/user/contacts', {
+                method: 'GET',
+                headers: {
+                    "Authorization": "Bearer " + localStorage.getItem("jwt-token")
                 }
-            } catch (error) {
-                console.error('Error fetching contacts:', error);
-            }
-        }
+            });
 
+            const data = await response.json()
+
+            if (response.status === 200) {
+                console.log(data)
+                setContacts(data.contacts);
+            } else {
+                console.error('Error fetching contacts:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error fetching contacts:', error);
+        }
+    }
+
+    useEffect(() => {
+        console.log(store);
         getContacts();
 
     }, []);
@@ -81,14 +83,17 @@ export const Private = () => {
                             <div className={`col-md-6 ${styles.contact}`} key={index}>
                                 <Card contact={userContact} index={index} />
                                 <div className={` ${styles.buttonsContainer} mt-3 mb-3`}>
-                                    <ButtonPencil contact={userContact} index={index} />
+                                    <ButtonPencil contact={userContact} index={index} onEdit={getContacts} />
                                     <ButtonDelete contact={userContact} index={index} />
                                 </div>
                             </div>
                         )
                     })
                 }
+
             </div>
+            <div id="modal-root"></div>
+
         </div>
     );
 };
