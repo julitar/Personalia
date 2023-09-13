@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "../../styles/card.module.css"
 
 export const Card = ({ contact, index }) => {
-    const userContact = contact;
+    const [userContact, setUserContact] = useState(contact);
     const key = index;
+
+    console.log("Rendering Card:", contact);
+
+    useEffect(() => {
+        setUserContact(contact);
+    }, [contact]);
+
     return (
         <>
             <div className={`card mb-3 mt-3 shadow ${styles.card}`} >

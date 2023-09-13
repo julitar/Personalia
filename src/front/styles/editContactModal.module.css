@@ -1,0 +1,53 @@
+.modalBackgroud{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+}
+.modalContent{
+    background: var(--background-color);
+}
+.modalHeader{
+    color: var(--color-primary);
+    text-align: center;
+    margin: 0 auto;
+    border-bottom: none;
+    font-family: Julius Sans One;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 8px;
+}
+.inputStyles{
+    background: var(--background-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid var(--text-color);
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    letter-spacing: -0.5px;
+    
+}
+.modalBodyRow{
+    align-items: baseline;
+    font-family: Work Sans;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.5px;
+    padding: 18px 44px
+}
+.inputContent{
+    padding-left: 44px;
+}
